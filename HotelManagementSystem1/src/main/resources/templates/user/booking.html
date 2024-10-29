@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Booking Form</title>
+   
+	<style>
+		body {
+		    font-family: Arial, sans-serif;
+		    margin: 0;
+		    padding: 20px;
+		}
+
+		h1, h2 {
+		    text-align: center;
+		}
+
+		form {
+		    max-width: 500px;
+		    margin: 0 auto;
+		    display: flex;
+		    flex-direction: column;
+		    gap: 10px;
+		}
+
+		label {
+		    font-weight: bold;
+		}
+
+		input {
+		    padding: 8px;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		}
+
+		button {
+		    background-color: #007bff;
+		    color: white;
+		    padding: 10px;
+		    border: none;
+		    border-radius: 5px;
+		    cursor: pointer;
+		    text-align: center;
+		}
+
+		button:hover {
+		    background-color: #0056b3;
+		}
+
+	</style>
+</head>
+<body>
+    <h1>Book Hotel</h1>
+    
+    <h2 th:text="${hotel.name}">Hotel Name</h2>
+    <p>City: <span th:text="${hotel.city}">City</span></p>
+    <p>Address: <span th:text="${hotel.address}">Address</span></p>
+    <p>Price per night: <span th:text="${hotel.price}">Price</span> USD</p>
+
+	<form th:action="@{/hotels/{id}/confirm(id=${hotel.id})}" th:object="${booking}" method="post">
+
+        <label for="userName">Name:</label>
+        <input type="text" th:field="*{userName}" id="userName" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" th:field="*{email}" id="email" required>
+        
+        <label for="checkInDate">Check-in Date:</label>
+        <input type="date" th:field="*{checkInDate}" id="checkInDate" required>
+        
+        <label for="checkOutDate">Check-out Date:</label>
+        <input type="date" th:field="*{checkOutDate}" id="checkOutDate" required>
+
+        <!-- New field for user's contact details -->
+        <label for="contact">Contact Number:</label>
+        <input type="text" th:field="*{contact}" id="contact" placeholder="Enter your contact number" required>
+
+        <!-- New field for total rooms -->
+        <label for="totalRooms">Total Rooms:</label>
+        <input type="number" th:field="*{totalRooms}" id="totalRooms" placeholder="Enter number of rooms required" required>
+
+        <button type="submit">Confirm Booking</button>
+    </form>
+</body>
+</html>

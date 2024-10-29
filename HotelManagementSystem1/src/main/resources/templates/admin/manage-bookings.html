@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Bookings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1> Bookings</h1>
+    <table>
+        <thead>
+            <tr>
+               
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Contact Number</th>
+                <th>Check-in Date</th>
+                <th>Check-out Date</th>
+                <th>Total Rooms</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="booking : ${bookings}">
+				<td th:text="${booking.id}">Booking ID</td>
+              
+                <td th:text="${booking.userName}">User Name</td>
+                <td th:text="${booking.email}">Email</td>
+                <td th:text="${booking.contact}">Contact Number</td>
+                <td th:text="${booking.checkInDate}">Check-in Date</td>
+                <td th:text="${booking.checkOutDate}">Check-out Date</td>
+                <td th:text="${booking.totalRooms}">Total Rooms</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

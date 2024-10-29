@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard - Hotels</title>
+    <link rel="stylesheet" href="/css/admin-dashboard.css">
+</head>
+<body>
+<div class="admin-container">
+    <div class="side-panel">
+        <h2>Admin Dashboard</h2>
+        <ul>
+            <li><a href="/admin/hotels">Hotels</a></li>
+            <!-- Add other links here -->
+        </ul>
+    </div>
+    <div class="main-content">
+        <h2>Manage Hotels</h2>
+        <a th:href="@{/admin/hotels/add}" class="btn">Add Hotel</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Address</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="hotel : ${hotels}">
+                    <td th:text="${hotel.name}"></td>
+                    <td th:text="${hotel.city}"></td>
+                    <td th:text="${hotel.address}"></td>
+                    <td th:text="${hotel.price}"></td>
+                    <td th:text="${hotel.rating}"></td>
+                    <td>
+                        <img th:src="${hotel.image}" alt="Hotel Image" style="width: 100px; height: auto;" />
+                    </td>
+                    <td>
+                        <a th:href="@{/admin/hotels/edit/{id}(id=${hotel.id})}">Edit</a>
+                        <a th:href="@{/admin/hotels/delete/{id}(id=${hotel.id})}">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .confirmation-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Booking Confirmed..</h1>
+    
+    <div class="confirmation-container">
+        <h2>Thank you for your booking!</h2>
+        <div class="detail"><strong>Hotel Name:</strong> <span th:text="${hotel.name}"></span></div>
+        <div class="detail"><strong>City:</strong> <span th:text="${hotel.city}"></span></div>
+        <div class="detail"><strong>Address:</strong> <span th:text="${hotel.address}"></span></div>
+        <div class="detail"><strong>User Name:</strong> <span th:text="${booking.userName}"></span></div>
+        <div class="detail"><strong>Email:</strong> <span th:text="${booking.email}"></span></div>
+        <div class="detail"><strong>Check-in Date:</strong> <span th:text="${booking.checkInDate}"></span></div>
+        <div class="detail"><strong>Check-out Date:</strong> <span th:text="${booking.checkOutDate}"></span></div>
+        <div class="detail"><strong>Contact:</strong> <span th:text="${booking.contact}"></span></div>
+        <div class="detail"><strong>Total Rooms:</strong> <span th:text="${booking.totalRooms}"></span></div>
+    </div>
+</body>
+</html>

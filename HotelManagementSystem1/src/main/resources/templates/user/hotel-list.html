@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Available Hotels</title>
+    
+	<style>
+		body {
+		    font-family: Arial, sans-serif;
+		    margin: 0;
+		    padding: 0;
+		}
+
+		h1 {
+		    text-align: center;
+		    margin-top: 20px;
+		}
+
+		.hotels-container {
+		    display: flex;
+		    flex-wrap: wrap;
+		    justify-content: center;
+		    gap: 20px;
+		    padding: 20px;
+		}
+
+		.hotel-card {
+		    border: 1px solid #ccc;
+		    border-radius: 8px;
+		    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		    width: 300px;
+		    padding: 15px;
+		    text-align: center;
+		}
+
+		.hotel-image {
+		    width: 100%;
+		    border-radius: 8px;
+		}
+
+		.hotel-details {
+		    padding: 10px;
+		}
+
+		button {
+		    background-color: rgb(146, 248, 248);
+		    color: white;
+		    padding: 10px 20px;
+		    border: none;
+		    border-radius: 5px;
+		    cursor: pointer;
+		}
+
+		button:hover {
+		    background-color: rgb(146, 248, 248);
+		}
+
+	</style>
+</head>
+<body>
+    <h1>Available Hotels</h1>
+    
+    <div class="hotels-container">
+        <!-- Loop through each hotel and display details -->
+        <div th:each="hotel : ${hotels}" class="hotel-card">
+            <img th:src="@{${hotel.image}}" alt="Hotel Image" class="hotel-image">
+            <div class="hotel-details">
+                <h2 th:text="${hotel.name}">Hotel Name</h2>
+                <p th:text="${hotel.city}">City</p>
+                <p th:text="${hotel.address}">Address</p>
+                <p>Price per night: <span th:text="${hotel.price}">Price</span> USD</p>
+                <p>Rating: <span th:text="${hotel.rating}">Rating</span>/5</p>
+				<button><a th:href="@{/hotels/{id}/book(id=${hotel.id})}" >Book Now</a></button>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/admin-dashboard.css">
+	<style>
+		/* General Admin Dashboard Layout */
+		.admin-container {
+		    display: flex;
+		    min-height: 100vh;
+		    font-family: Arial, sans-serif;
+		}
+
+		/* Side Menu Styling */
+		.side-menu {
+		    width: 250px;
+		    background-color: #333;
+		    color: #fff;
+		    padding: 20px;
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		}
+
+		.side-menu h2 {
+		    font-size: 24px;
+		    margin-bottom: 20px;
+		}
+
+		.side-menu ul {
+		    list-style-type: none;
+		    padding: 0;
+		}
+
+		.side-menu li {
+		    width: 100%;
+		    margin: 15px 0;
+		}
+
+		.side-menu a {
+		    text-decoration: none;
+		    color: #fff;
+		    font-size: 18px;
+		    width: 100%;
+		    display: block;
+		    padding: 10px;
+		    text-align: center;
+		    border-radius: 4px;
+		    transition: background 0.3s ease;
+		}
+
+		.side-menu a:hover {
+		    background-color: #444;
+		}
+
+		/* Main Content Styling */
+		.main-content {
+		    flex: 1;
+		    padding: 40px;
+		    background-color: #f4f4f9;
+		}
+
+		.main-content h1 {
+		    font-size: 28px;
+		    margin-bottom: 30px;
+		}
+
+		.dashboard-options {
+		    display: flex;
+		    gap: 20px;
+		}
+
+		.option-card {
+		    padding: 20px;
+		    background-color: #fff;
+		    border: 1px solid #ddd;
+		    border-radius: 8px;
+		    width: 200px;
+		    text-align: center;
+		    text-decoration: none;
+		    color: #333;
+		    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		    transition: transform 0.2s;
+		}
+
+		.option-card:hover {
+		    transform: translateY(-5px);
+		    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+		}
+
+	</style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Side Menu Bar -->
+        <div class="side-menu">
+            <h2>Admin Dashboard</h2>
+            <ul>
+                <li><a href="/admin">Dashboard</a></li>
+                <li><a th:href="@{/admin/hotels}">Manage Hotels</a></li>
+                <li><a th:href="@{/admin/hotel-list}">Manage Bookings</a></li>
+            </ul>
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <h1>Welcome to the Admin Dashboard</h1>
+            <div class="dashboard-options">
+                <a th:href="@{/admin/hotels}" >Manage Hotels</a>
+                <a th:href="@{/admin/hotel-list}" >Manage Bookings</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
